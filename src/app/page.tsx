@@ -3,7 +3,8 @@ import prisma from '@/utils/db';
 import Link from 'next/link'
 import React from 'react'
 
-export const dynamic = "force-dynamic"; // will convert page from statice page into dynamic page
+export const dynamic = "force-dynamic"; // will convert page from statice page into dynamic page so no need for revalidatePath("/") in server actions
+
 
 const HomePage = async () => {
 

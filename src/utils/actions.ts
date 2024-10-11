@@ -25,7 +25,8 @@ export async function createTask({title,description} : CreateTaskDto ) {  // obj
         throw new Error("could not create the task, please try again");
     }
 
-    revalidatePath("/");
+   // revalidatePath("/");  // coz home page is static use  revalidatePath("/");
+
     redirect("/");
 }
 
