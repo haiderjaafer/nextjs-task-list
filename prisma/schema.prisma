@@ -1,0 +1,46 @@
+
+//npm install prisma dev
+
+//npm install @prisma/client
+
+//  npx prisma init               first command to create prisma schema folder 
+// npx prisma format                optional
+// npx prisma migrate dev           to reflect any changes in models to db
+
+
+// if we want to run project in different port in package.json and script
+
+//  "scripts": {
+//     "dev": "next dev -p 4000", in development mode
+//     "build": "next build",
+//     "start": "next start -p 4000", in production mode
+//     "lint": "next lint"
+//   },
+
+
+
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Status {
+  TODO
+  IN_PROGRESS
+  COMPLETED
+}
+
+model Task {
+  id          Int      @id @default(autoincrement())
+  title       String   @db.VarChar(200)
+  description String
+  status      Status   @default(TODO)   // status is enum type and has TODO as initial value
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
